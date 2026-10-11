@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IBD Aide — Wireframes (6 Core Screens)</title>
+<style>
+  :root{
+    --ink:#2b3440; --line:#c9d1d9; --fill:#eef1f4; --fill2:#f7f9fa;
+    --accent:#2e8b84; --accent-soft:#dceeec;
+    --green:#3a9d6e; --amber:#d99a2b; --red:#c05b5b;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background:#fafbfc; color:var(--ink); padding:32px 24px 56px;}
+  header{max-width:1280px; margin:0 auto 8px;}
+  h1{font-size:24px; font-weight:700;}
+  header p{color:#5b6673; font-size:13.5px; margin-top:6px; max-width:820px; line-height:1.5;}
+  .legend{display:flex; gap:18px; margin-top:10px; font-size:12px; color:#5b6673; flex-wrap:wrap;}
+  .legend span{display:inline-flex; align-items:center; gap:6px;}
+  .dot{width:10px;height:10px;border-radius:3px;display:inline-block;}
+  .grid{max-width:1280px; margin:24px auto 0; display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:34px;}
+  .cell h2{font-size:15px; font-weight:700; margin-bottom:2px;}
+  .cell .fr{font-size:11.5px; color:var(--accent); font-weight:600; letter-spacing:.03em; margin-bottom:10px;}
+  .phone{width:100%; max-width:340px; border:2px solid var(--ink); border-radius:28px; background:#fff; padding:10px 10px 6px; box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .screen{border-radius:18px; overflow:hidden; border:1px solid var(--line); display:flex; flex-direction:column; height:640px;}
+  .status{height:18px; background:var(--fill2); display:flex; justify-content:space-between; align-items:center; padding:0 12px; font-size:8px; color:#98a2ad;}
+  .body{flex:1; padding:10px; display:flex; flex-direction:column; gap:8px; background:#fff; overflow:hidden; position:relative;}
+  .tabbar{height:46px; border-top:1px solid var(--line); display:flex; background:var(--fill2);}
+  .tab{flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; font-size:8.5px; color:#8b95a1;}
+  .tab .ico{width:16px; height:16px; border:1.5px solid #aab4bf; border-radius:4px;}
+  .tab.on{color:var(--accent); font-weight:700;}
+  .tab.on .ico{border-color:var(--accent); background:var(--accent-soft);}
+  .bar{background:var(--fill); border-radius:6px;}
+  .card{border:1px solid var(--line); border-radius:10px; padding:8px; background:#fff;}
+  .card.tint{background:var(--fill2);}
+  .row{display:flex; gap:6px; align-items:center;}
+  .grow{flex:1;}
+  .t1{font-size:12px; font-weight:700;}
+  .t2{font-size:10px; color:#5b6673;}
+  .t3{font-size:8.5px; color:#8b95a1;}
+  .chip{font-size:8.5px; font-weight:700; padding:2px 7px; border-radius:99px; border:1px solid var(--line); color:#5b6673; background:#fff; white-space:nowrap;}
+  .chip.acc{background:var(--accent-soft); border-color:var(--accent); color:var(--accent);}
+  .chip.g{background:#e4f2ea; border-color:var(--green); color:var(--green);}
+  .chip.a{background:#f9efdb; border-color:var(--amber); color:#9a6d15;}
+  .chip.r{background:#f6e4e4; border-color:var(--red); color:var(--red);}
+  .btn{border:1.5px solid var(--accent); color:var(--accent); background:var(--accent-soft); border-radius:9px; padding:7px 0; text-align:center; font-size:10.5px; font-weight:700;}
+  .btn.solid{background:var(--accent); color:#fff;}
+  .btn.ghost{background:#fff; border-color:var(--line); color:#5b6673; font-weight:600;}
+  .fab{position:absolute; right:12px; bottom:12px; width:46px; height:46px; border-radius:50%; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; font-weight:600; box-shadow:0 3px 8px rgba(0,0,0,.18);}
+  .seg{display:flex; border:1px solid var(--line); border-radius:8px; overflow:hidden;}
+  .seg div{flex:1; text-align:center; font-size:9px; padding:5px 0; color:#8b95a1; background:var(--fill2);}
+  .seg .on{background:var(--accent); color:#fff; font-weight:700;}
+  .note{max-width:340px; margin-top:10px; font-size:11.5px; color:#5b6673; line-height:1.5; border-left:3px solid var(--accent-soft); padding-left:10px;}
+  .sketch{border:1.5px dashed #aab4bf; border-radius:8px; background:repeating-linear-gradient(45deg,#fff,#fff 6px,var(--fill2) 6px,var(--fill2) 12px); display:flex; align-items:center; justify-content:center; color:#8b95a1; font-size:9.5px;}
+  .kv{display:flex; justify-content:space-between; font-size:9.5px; color:#5b6673; padding:2px 0;}
+  .hline{display:flex; align-items:flex-end; gap:3px; height:52px;}
+  .hline i{flex:1; background:var(--accent-soft); border:1px solid var(--accent); border-bottom-width:2px; border-radius:3px 3px 0 0;}
+  .check{width:13px; height:13px; border:1.5px solid var(--accent); border-radius:4px; flex:none;}
+  .check.on{background:var(--accent);}
+  .avatar{width:26px; height:26px; border-radius:50%; background:var(--fill); border:1px solid var(--line); flex:none;}
+  .scale{display:flex; gap:4px;}
+  .scale i{flex:1; height:26px; border:1px solid var(--line); border-radius:6px; background:var(--fill2); display:flex; align-items:center; justify-content:center; font-size:8.5px; color:#8b95a1; font-style:normal;}
+  .scale i.on{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:700;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>IBD Aide — Wireframes · 6 Core Screens</h1>
+  <p>Low-fidelity layout reference for iOS (SwiftUI) and Android (Compose). Structure and hierarchy are normative; visual styling is not — each platform uses native components (SF Symbols / Material 3). Every screen sits behind the biometric app lock (FR-13). Primary content fits without scrolling on ≥6.1″ displays (NFR-4).</p>
+  <div class="legend">
+    <span><span class="dot" style="background:var(--accent)"></span>Accent / primary action</span>
+    <span><span class="dot" style="background:var(--fill); border:1px solid var(--line)"></span>Placeholder content</span>
+    <span><span class="dot" style="background:repeating-linear-gradient(45deg,#fff,#fff 3px,#eef1f4 3px,#eef1f4 6px); border:1px dashed #aab4bf"></span>Camera / map / preview region</span>
+  </div>
+</header>
+
+<div class="grid">
+
+<!-- ============ 1. HOME ============ -->
+<div class="cell">
+  <h2>1 · Home — Today &amp; Quick Log</h2>
+  <div class="fr">FR-1 · FR-2 · FR-3 · NFR-6 (≤2 taps to log)</div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="body">
+      <div class="row"><div class="grow"><div class="t1">Good morning, Alex</div><div class="t3">Saturday, Jul 26</div></div><div class="avatar"></div></div>
+      <div class="card tint">
+        <div class="row"><div class="grow t2" style="font-weight:700">Today's score · HBI</div><span class="chip g">Remission · 3</span></div>
+        <div class="t3" style="margin-top:4px">For discussion with your care team — not a diagnosis</div>
+      </div>
+      <div class="t2" style="font-weight:700">Quick log</div>
+      <div class="row">
+        <div class="btn grow">💧 Water</div>
+        <div class="btn grow">🍽 Meal</div>
+        <div class="btn grow">📋 Symptoms</div>
+      </div>
+      <div class="card">
+        <div class="t2" style="font-weight:700; margin-bottom:5px">Bristol quick-tap (≤10 s)</div>
+        <div class="scale"><i>1</i><i>2</i><i>3</i><i class="on">4</i><i>5</i><i>6</i><i>7</i></div>
+        <div class="row" style="margin-top:5px"><span class="chip">Blood?</span><span class="chip">Urgency?</span><span class="chip acc">Save</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="grow"><div class="t2" style="font-weight:700">Next appointment</div><div class="t3">IV infusion · Wed Jul 29, 9:00 AM · CityCare Infusion</div></div><span class="chip acc">3 questions</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="grow"><div class="t2" style="font-weight:700">Meds due</div><div class="t3">Mesalamine 800 mg · 12:00 PM</div></div><span class="chip">Taken</span><span class="chip">Skip</span></div>
+      </div>
+      <div class="fab">＋</div>
+    </div>
+    <div class="tabbar">
+      <div class="tab on"><div class="ico"></div>Home</div><div class="tab"><div class="ico"></div>Trends</div><div class="tab"><div class="ico"></div>Scan</div><div class="tab"><div class="ico"></div>Care</div><div class="tab"><div class="ico"></div>More</div>
+    </div>
+  </div></div>
+  <div class="note">FAB = full symptom log (≤60 s form). Score card reflects diagnosis: HBI (Crohn's) / SCCAI (UC) / trends-only (IBD-U). All cards deep-link to their tab.</div>
+</div>
+
+<!-- ============ 2. TRENDS ============ -->
+<div class="cell">
+  <h2>2 · Trends — Insights &amp; Flare Watch</h2>
+  <div class="fr">FR-2 · FR-12</div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="body">
+      <div class="t1">Trends</div>
+      <div class="seg"><div>Week</div><div class="on">Month</div><div>Year</div></div>
+      <div class="card" style="border-color:var(--amber); background:#fdf8ee">
+        <div class="t2" style="font-weight:700; color:#9a6d15">⚠ Possible flare pattern</div>
+        <div class="t3">Score above your baseline 5 of last 7 days. Consider contacting your care team.</div>
+      </div>
+      <div class="card">
+        <div class="kv"><span style="font-weight:700">HBI score</span><span>avg 4.2 ↑</span></div>
+        <div class="hline"><i style="height:30%"></i><i style="height:35%"></i><i style="height:28%"></i><i style="height:45%"></i><i style="height:60%"></i><i style="height:72%"></i><i style="height:65%"></i><i style="height:78%"></i></div>
+      </div>
+      <div class="card">
+        <div class="kv"><span style="font-weight:700">Symptom frequency</span><span>BM · pain · fatigue</span></div>
+        <div class="hline" style="height:40px"><i style="height:55%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:35%"></i><i style="height:50%"></i><i style="height:65%"></i><i style="height:45%"></i></div>
+      </div>
+      <div class="card">
+        <div class="t2" style="font-weight:700; margin-bottom:4px">Possible triggers (logged 4–48 h before spikes)</div>
+        <div class="kv"><span>Dairy (heavy cream)</span><span class="chip a">6 of 8 spikes</span></div>
+        <div class="kv"><span>Fried food</span><span class="chip a">4 of 8 spikes</span></div>
+        <div class="kv"><span>Caffeine</span><span class="chip">2 of 8 spikes</span></div>
+      </div>
+      <div class="row"><span class="chip">Weight</span><span class="chip">Sleep</span><span class="chip">QoL check-in ✓ Jul 20</span></div>
+    </div>
+    <div class="tabbar">
+      <div class="tab"><div class="ico"></div>Home</div><div class="tab on"><div class="ico"></div>Trends</div><div class="tab"><div class="ico"></div>Scan</div><div class="tab"><div class="ico"></div>Care</div><div class="tab"><div class="ico"></div>More</div>
+    </div>
+  </div></div>
+  <div class="note">Flare banner appears only on sustained elevation vs. personal baseline; wording is advisory, never diagnostic. Trigger rows tap through to the food diary evidence.</div>
+</div>
+
+<!-- ============ 3. SCAN ============ -->
+<div class="cell">
+  <h2>3 · Scan — Barcode &amp; Dish Safety</h2>
+  <div class="fr">FR-4 · FR-5</div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="body">
+      <div class="seg"><div class="on">Barcode</div><div>Dish photo</div></div>
+      <div class="sketch" style="height:150px">［ camera viewfinder — barcode reticle ］</div>
+      <div class="card">
+        <div class="row"><div class="grow t1">Granola Clusters, 11 oz</div><span class="chip a">Caution</span></div>
+        <div class="t3" style="margin-bottom:5px">Open Food Facts · barcode 0 12345 67890 · evaluated on-device</div>
+        <div class="kv"><span>Inulin (chicory root)</span><span class="chip a">General IBD caution</span></div>
+        <div class="kv"><span>Almonds (whole)</span><span class="chip r">Your trigger</span></div>
+        <div class="kv"><span>Honey, oats, cinnamon</span><span class="chip g">OK</span></div>
+      </div>
+      <div class="row"><span class="chip acc">Flare mode: stricter rules ✓</span><span class="chip">Log as meal</span></div>
+      <div class="card tint"><div class="t3">Estimates only — can be wrong or incomplete. Not medical advice. Photos never leave your phone.</div></div>
+    </div>
+    <div class="tabbar">
+      <div class="tab"><div class="ico"></div>Home</div><div class="tab"><div class="ico"></div>Trends</div><div class="tab on"><div class="ico"></div>Scan</div><div class="tab"><div class="ico"></div>Care</div><div class="tab"><div class="ico"></div>More</div>
+    </div>
+  </div></div>
+  <div class="note">Result verdict = worst flagged ingredient (Green/Caution/Avoid) with per-ingredient reasons split into "general IBD guidance" vs. "your trigger". Dish-photo tab shows "likely contains…" uncertainty language; devices without on-device AI get the OCR-label fallback with an explanatory row.</div>
+</div>
+
+<!-- ============ 4. CARE ============ -->
+<div class="cell">
+  <h2>4 · Care — Team &amp; Appointments</h2>
+  <div class="fr">FR-6 · FR-7</div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="body">
+      <div class="row"><div class="grow t1">Care</div><span class="chip acc">＋ Add</span></div>
+      <div class="seg"><div class="on">Appointments</div><div>Care team</div><div>Meds</div></div>
+      <div class="card" style="border-color:var(--accent)">
+        <div class="row"><div class="grow"><div class="t2" style="font-weight:700">IV infusion — Infliximab</div><div class="t3">Wed Jul 29 · 9:00 AM · CityCare Infusion Center</div></div><span class="chip">every 8 wks</span></div>
+        <div class="row" style="margin-top:5px"><span class="chip">⏰ 1 wk · 1 day · 2 h</span><span class="chip">📍 Map</span><span class="chip acc">Questions (3)</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="grow"><div class="t2" style="font-weight:700">Office visit — Dr. Rao (GI)</div><div class="t3">Fri Aug 14 · 2:30 PM · Northside Gastro</div></div></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="grow"><div class="t2" style="font-weight:700">Colonoscopy</div><div class="t3">Tue Sep 8 · 7:00 AM · prep checklist starts Sep 6</div></div><span class="chip">Prep ✓ 0/6</span></div>
+      </div>
+      <div class="card tint">
+        <div class="t2" style="font-weight:700; margin-bottom:4px">Questions to ask · next visit</div>
+        <div class="row" style="margin-bottom:3px"><div class="check"></div><div class="t2 grow">Ask about biosimilar switch</div></div>
+        <div class="row" style="margin-bottom:3px"><div class="check"></div><div class="t2 grow">Iron levels — recheck?</div></div>
+        <div class="row"><div class="bar grow" style="height:20px"></div><span class="chip acc">＋</span></div>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab"><div class="ico"></div>Home</div><div class="tab"><div class="ico"></div>Trends</div><div class="tab"><div class="ico"></div>Scan</div><div class="tab on"><div class="ico"></div>Care</div><div class="tab"><div class="ico"></div>More</div>
+    </div>
+  </div></div>
+  <div class="note">One tab hosts three segments: Appointments, Care team (providers/facilities with call·email·map actions), Meds (screen 5). Question capture is always one tap away; questions attach to the next appointment and flow into the PDF report.</div>
+</div>
+
+<!-- ============ 5. MEDS ============ -->
+<div class="cell">
+  <h2>5 · Meds — Adherence &amp; Refills</h2>
+  <div class="fr">FR-8</div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="body">
+      <div class="row"><div class="grow t1">Medications</div><span class="chip acc">＋ Add</span></div>
+      <div class="card" style="border-color:var(--amber); background:#fdf8ee">
+        <div class="row"><div class="grow t2" style="font-weight:700; color:#9a6d15">🔔 Refill soon — Mesalamine</div><span class="chip a">6 days left</span></div>
+      </div>
+      <div class="t2" style="font-weight:700">Today</div>
+      <div class="card">
+        <div class="row"><div class="check on"></div><div class="grow"><div class="t2" style="font-weight:700">Mesalamine 800 mg</div><div class="t3">8:00 AM · taken 8:04</div></div><span class="chip g">✓</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="check"></div><div class="grow"><div class="t2" style="font-weight:700">Mesalamine 800 mg</div><div class="t3">12:00 PM · due</div></div><span class="chip">Taken</span><span class="chip">Skip</span></div>
+      </div>
+      <div class="card">
+        <div class="row"><div class="check"></div><div class="grow"><div class="t2" style="font-weight:700">Azathioprine 50 mg</div><div class="t3">9:00 PM</div></div></div>
+      </div>
+      <div class="t2" style="font-weight:700">Biologic</div>
+      <div class="card tint">
+        <div class="row"><div class="grow"><div class="t2" style="font-weight:700">Infliximab (IV)</div><div class="t3">Next dose Wed Jul 29 · linked to appointment</div></div><span class="chip acc">every 8 wks</span></div>
+      </div>
+      <div class="card">
+        <div class="kv"><span style="font-weight:700">Adherence · 30 days</span><span>93% · 12-day streak</span></div>
+        <div class="bar" style="height:8px"><div style="width:93%; height:100%; background:var(--accent); border-radius:6px"></div></div>
+      </div>
+    </div>
+    <div class="tabbar">
+      <div class="tab"><div class="ico"></div>Home</div><div class="tab"><div class="ico"></div>Trends</div><div class="tab"><div class="ico"></div>Scan</div><div class="tab on"><div class="ico"></div>Care</div><div class="tab"><div class="ico"></div>More</div>
+    </div>
+  </div></div>
+  <div class="note">Reached via Care ▸ Meds segment. Taken/Skip also available as notification actions without opening the app (generic notification text — no drug names on the lock screen). IV biologics link to their infusion appointments.</div>
+</div>
+
+<!-- ============ 6. REPORT ============ -->
+<div class="cell">
+  <h2>6 · Doctor Report — Build &amp; Share</h2>
+  <div class="fr">FR-9 · (More ▸ Doctor Report)</div>
+  <div class="phone"><div class="screen">
+    <div class="status"><span>9:41</span><span>●●●</span></div>
+    <div class="body">
+      <div class="t1">Doctor report</div>
+      <div class="seg"><div>2 wks</div><div class="on">30 days</div><div>90 days</div><div>Custom</div></div>
+      <div class="card">
+        <div class="t2" style="font-weight:700; margin-bottom:4px">Include</div>
+        <div class="row" style="margin-bottom:3px"><div class="check on"></div><div class="t2 grow">Symptom summary &amp; score trend</div></div>
+        <div class="row" style="margin-bottom:3px"><div class="check on"></div><div class="t2 grow">Medication adherence</div></div>
+        <div class="row" style="margin-bottom:3px"><div class="check on"></div><div class="t2 grow">Food triggers</div></div>
+        <div class="row" style="margin-bottom:3px"><div class="check on"></div><div class="t2 grow">Questions for this visit</div></div>
+        <div class="row"><div class="check"></div><div class="t2 grow">QoL check-ins</div></div>
+      </div>
+      <div class="sketch" style="height:130px">［ PDF preview — page 1 of 3 ］</div>
+      <div class="btn solid">Share PDF…</div>
+      <div class="card tint"><div class="t3">Opens your share sheet (Mail, Messages…). IBD Aide never sends your data itself.</div></div>
+    </div>
+    <div class="tabbar">
+      <div class="tab"><div class="ico"></div>Home</div><div class="tab"><div class="ico"></div>Trends</div><div class="tab"><div class="ico"></div>Scan</div><div class="tab"><div class="ico"></div>Care</div><div class="tab on"><div class="ico"></div>More</div>
+    </div>
+  </div></div>
+  <div class="note">Lives under More (with News, Toilet finder, Backup &amp; export, Settings). Share button hands the generated PDF to the OS share sheet — the user sends it via their own email/SMS app, keeping the app out of HIPAA transmission scope.</div>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Compose provides the real theme; this only styles the window before Compose loads. -->
+    <style name="Theme.IBDAide" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:statusBarColor">#1E6560</item>
+    </style>
+</resources>

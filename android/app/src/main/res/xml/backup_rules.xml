@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Pre-Android-12 Auto Backup rules (FR-14a): include the database + prefs, exclude caches. -->
+<full-backup-content>
+    <include domain="database" path="." />
+    <include domain="sharedpref" path="." />
+    <exclude domain="file" path="scan_photos" />
+</full-backup-content>

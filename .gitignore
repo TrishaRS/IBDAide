@@ -1,0 +1,22 @@
+# macOS metadata (external exFAT drives generate these constantly)
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Xcode
+ios/**/xcuserdata/
+ios/**/*.xcuserstate
+ios/build/
+DerivedData/
+
+# Android / Gradle
+android/.gradle/
+android/build/
+android/app/build/
+android/local.properties
+android/.idea/
+android/gradle/wrapper/gradle-wrapper.jar
+
+# Scratch
+*.log

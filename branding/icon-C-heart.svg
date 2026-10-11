@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3BA89E"/>
+      <stop offset="1" stop-color="#1E6560"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Colon arch cradling a heart: care + gut health -->
+  <path d="M 322 760 L 322 430 A 190 190 0 0 1 702 430 L 702 760"
+        fill="none" stroke="#FFFFFF" stroke-width="70" stroke-linecap="round"/>
+
+  <!-- Heart -->
+  <path d="M 512 720
+           C 470 668 386 622 386 540
+           C 386 484 428 452 472 452
+           C 494 452 508 462 512 472
+           C 516 462 530 452 552 452
+           C 596 452 638 484 638 540
+           C 638 622 554 668 512 720 Z"
+        fill="#FFFFFF"/>
+</svg>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#37A197"/>
+      <stop offset="1" stop-color="#174F4B"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Shield: privacy + protection -->
+  <path d="M 512 128
+           C 614 188 706 212 776 224
+           L 776 540
+           C 776 712 652 816 512 896
+           C 372 816 248 712 248 540
+           L 248 224
+           C 318 212 410 188 512 128 Z"
+        fill="#FFFFFF" fill-opacity="0.10" stroke="#FFFFFF" stroke-width="44"
+        stroke-linejoin="round"/>
+
+  <!-- Gut: three winding rows inside the shield -->
+  <path d="M 408 350 H 588 A 47 47 0 0 1 588 444 H 420 A 47 47 0 0 0 420 538 H 588 A 47 47 0 0 1 588 632 H 428"
+        fill="none" stroke="#FFFFFF" stroke-width="46" stroke-linecap="round"/>
+</svg>
